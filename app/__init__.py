@@ -12,7 +12,6 @@ def create_app(config=None):
         import config
 
     app = Flask(__name__)
-    print(config)
     app.config.from_object(config)
     db.init_app(app)
 
