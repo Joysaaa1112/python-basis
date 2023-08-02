@@ -1,10 +1,27 @@
-import json
+import time
 
-from lang import lang
+import openai
+
 from . import api_blueprint
 
 
-@api_blueprint.route("/test/index", methods=["GET"])
-def index():
-    print(lang("200"))
-    return json.dumps({"code": 0, "data": {}, "msg": ""})
+def test():
+    openai.organization = "org-f1KDKRG42NVHbqTJ1nGnqmDl"
+    openai.api_key = "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"
+    print(openai.Model.list())
+
+
+def stream():
+    count = 0
+    for i in range(10):
+        time.sleep(0.5)
+        count += i
+        data = f"data: {count}\n\n"
+        yield data
+
+
+@api_blueprint.route("test")
+def stream_api():
+    test()
+    return ""
+    # return Response(stream(), content_type="text/event-stream")
