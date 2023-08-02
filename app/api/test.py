@@ -7,7 +7,7 @@ from . import api_blueprint
 
 def test():
     openai.organization = "org-f1KDKRG42NVHbqTJ1nGnqmDl"
-    openai.api_key = "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"
+    openai.api_key = "sk-xxx"
     print(openai.Model.list())
 
 
